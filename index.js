@@ -11,11 +11,15 @@ const app = express();
 dotenv.config();
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-  origin:'http://localhost:4200',
-  // origin:"http://192.168.1.10:4200/"
-  credentials:true
-}));
+app.use(
+  cors({
+    // origin:'http://localhost:4200',
+    origin: process.env.LIVE_URL,
+
+    // origin:"http://192.168.1.10:4200/"
+    credentials: true,
+  })
+);
 
 app.use("/api/role", roleRoute);
 app.use("/api/auth", authRoute);
@@ -45,7 +49,7 @@ const connectMongooDB = async () => {
   }
 };
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   connectMongooDB();
   console.log("connected to backend");
 });
