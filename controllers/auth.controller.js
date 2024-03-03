@@ -1,7 +1,7 @@
 import Role from "../models/Role.js";
 import User from "../models/User.js";
 import UserToken from "../models/UserToken.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { createSuccess } from "../utils/success.js";
 import { createError } from "../utils/error.js";
 import jwt from "jsonwebtoken";
