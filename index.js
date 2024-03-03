@@ -15,8 +15,6 @@ app.use(
   cors({
     // origin:'http://localhost:4200',
     origin: process.env.LIVE_URL,
-
-    // origin:"http://192.168.1.10:4200/"
     credentials: true,
   })
 );
@@ -49,7 +47,7 @@ const connectMongooDB = async () => {
   }
 };
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || '3000', () => {
   connectMongooDB();
   console.log("connected to backend");
 });
